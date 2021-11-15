@@ -1,53 +1,12 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import './App.css';
-import axios from 'axios';
-
-interface IWeatherDataProps {
-  cnt?: number;
-  cod?: string;
-  list?: [];
-  city: ICityProps;
-}
-
-interface ICityProps {
-  country?: string
-  id?: number
-  name: string
-  population?: number
-  sunrise?: number
-  sunset?: number
-  timezone?: number
-}
+import WeatherData from './components/Weather';
 
 function App() {
 
-  if (!process.env.REACT_APP_API_KEY) {
-    console.log(`Cannot find REACT_APP_API_KEY key: ${process.env.REACT_APP_API_KEY}`);
-  }
-  
-  const [responseData, setResponseData] = useState<IWeatherDataProps>();
-
-  useEffect(() => {
-
-    const apiKey = process.env.REACT_APP_API_KEY;
-    
-    const getFetchUrl = () => {
-      return 'https://api.openweathermap.org/data/2.5/forecast?q=Brisbane,AU&appid=' + apiKey +'&units=metric'
-    }
-    
-    async function fetchData() {
-      const result = await axios(getFetchUrl());
-      setResponseData(result.data);
-    }
-    
-    fetchData();
-  }, []);
-
-  console.log(responseData)
-
   return (
     <div className="App">
-      {responseData?.city.name}
+      <WeatherData cityName="Brisbane" countryCode="AU" />
     </div>
   );
 }
