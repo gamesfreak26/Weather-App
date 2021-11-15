@@ -1,3 +1,19 @@
+# Weather App
+
+This project was built with the intention for me to:
+- Get better with TypeScript
+- Get better with React
+
+# Running the application
+
+- Sign up for a free API Key [here](https://openweathermap.org/price)
+- Rename `.env.template` to `.env`
+- Add your API Key to the REACT_APP_API_KEY variable.  Make sure that you do not use quotation marks.
+
+```
+REACT_APP_API_KEY=****************
+```
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
