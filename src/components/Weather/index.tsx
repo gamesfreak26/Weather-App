@@ -31,14 +31,24 @@ const WeatherData  = ({cityName, countryCode, units}: IWeatherDataProps) => {
   console.log(responseData)
 
   return (
+    // TODO: Wrap in if responseData
     <div>
       <h1>{responseData?.city.name}</h1>
       <h2>{responseData?.city.country}</h2>
 
       <div>
-        {responseData?.list[1].dt_txt}
+        {responseData?.list[0].dt_txt}
       </div>
 
+      <p>Description: {responseData?.list[0].weather[0].description}</p>
+
+      <p>Temp: {responseData?.list[0].main.temp}</p>
+
+      <p>Feels like: {responseData?.list[0].main.feels_like}</p>
+
+      <p>Min Temp: {responseData?.list[0].main.temp_min}</p>
+
+      <p>Max Temp: {responseData?.list[0].main.temp_max}</p>
     </div>
   );
 }
