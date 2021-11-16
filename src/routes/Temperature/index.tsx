@@ -3,19 +3,19 @@ import axios from 'axios';
 
 import './index.scss'
 
-import { IResponseData } from './interfaces/IReponseData';
-import TemperatureCard from '../TemperatureCard';
-import TitleCard from '../TitleCard';
+import { IResponseData } from '../../interfaces/IReponseData';
+import TemperatureCard from '../../components/TemperatureCard';
+import TitleCard from '../../components/TitleCard';
 
 const baseClass = 'wa-weater-data'
 
-export interface IWeatherDataProps {
+export interface TemperatureDataProps {
   cityName: string;
   countryCode: string;
   units: string;
 }
 
-const WeatherData  = ({cityName, countryCode, units}: IWeatherDataProps) => {
+const TemperatureData  = ({cityName, countryCode, units}: TemperatureDataProps) => {
   if (!process.env.REACT_APP_API_KEY) {
     console.log(`Cannot find REACT_APP_API_KEY key: ${process.env.REACT_APP_API_KEY}`);
   }
@@ -40,12 +40,8 @@ const WeatherData  = ({cityName, countryCode, units}: IWeatherDataProps) => {
     
     fetchData();
   }, [cityName, countryCode, units]);
-    
-  console.log(responseData)
 
-  return (
-    // TODO: Wrap in if responseData
-    
+  return (    
     <div>
       <TitleCard cityName={responseData?.city.name} countryCode={responseData?.city.country} />
 
@@ -75,4 +71,4 @@ const WeatherData  = ({cityName, countryCode, units}: IWeatherDataProps) => {
   );
 }
 
-export default WeatherData
+export default TemperatureData
