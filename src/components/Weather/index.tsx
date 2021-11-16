@@ -3,15 +3,21 @@ import axios from 'axios';
 
 import './index.scss'
 
-import { IWeatherDataProps } from './interfaces/IWeatherDataProps';
-import { IResponseDataProps } from './interfaces/IReponseDataProps';
+import { IResponseData } from './interfaces/IReponseData';
+import TemperatureCard from '../TemperatureCard';
+
+export interface IWeatherDataProps {
+  cityName: string;
+  countryCode: string;
+  units?: string;
+}
 
 const WeatherData  = ({cityName, countryCode, units}: IWeatherDataProps) => {
   if (!process.env.REACT_APP_API_KEY) {
     console.log(`Cannot find REACT_APP_API_KEY key: ${process.env.REACT_APP_API_KEY}`);
   }
       
-  const [responseData, setResponseData] = useState<IResponseDataProps>();
+  const [responseData, setResponseData] = useState<IResponseData>();
   
   useEffect(() => {
     const apiKey = process.env.REACT_APP_API_KEY;
@@ -32,23 +38,24 @@ const WeatherData  = ({cityName, countryCode, units}: IWeatherDataProps) => {
 
   return (
     // TODO: Wrap in if responseData
+    
     <div>
       <h1>{responseData?.city.name}</h1>
       <h2>{responseData?.city.country}</h2>
 
-      <div>
-        {responseData?.list[0].dt_txt}
-      </div>
+      {responseData?.list.map(list => {
+        return <TemperatureCard 
+          dateTimeText={list.dt_txt} 
+          weatherDescription={list.weather[0].description} 
+          temp={list.main.temp} 
+          minTemp={list.main.feels_like} 
+          maxTemp={list.main.temp_min} 
+          feelsLikeTemp={list.main.temp_max} 
+        />
+      })}
 
-      <p>Description: {responseData?.list[0].weather[0].description}</p>
 
-      <p>Temp: {responseData?.list[0].main.temp}</p>
-
-      <p>Feels like: {responseData?.list[0].main.feels_like}</p>
-
-      <p>Min Temp: {responseData?.list[0].main.temp_min}</p>
-
-      <p>Max Temp: {responseData?.list[0].main.temp_max}</p>
+      
     </div>
   );
 }

@@ -1,4 +1,4 @@
-export interface IWindProps {
+export interface IWind {
     deg: number;
     gust: number;
     speed: number;

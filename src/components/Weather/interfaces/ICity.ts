@@ -1,4 +1,4 @@
-export interface ICityProps {
+export interface ICity {
     country: string;
     id: number;
     name: string;

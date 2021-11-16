@@ -1,4 +1,4 @@
-export interface IMainProps {
+export interface IMain {
     feels_like: number;
     grnd_level: number;
     humidity: number;
