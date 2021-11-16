@@ -5,11 +5,14 @@ import './index.scss'
 
 import { IResponseData } from './interfaces/IReponseData';
 import TemperatureCard from '../TemperatureCard';
+import TitleCard from '../TitleCard';
+
+const baseClass = 'wa-weater-data'
 
 export interface IWeatherDataProps {
   cityName: string;
   countryCode: string;
-  units?: string;
+  units: string;
 }
 
 const WeatherData  = ({cityName, countryCode, units}: IWeatherDataProps) => {
@@ -23,7 +26,11 @@ const WeatherData  = ({cityName, countryCode, units}: IWeatherDataProps) => {
     const apiKey = process.env.REACT_APP_API_KEY;
         
     const getFetchUrl = () => {
-      return `https://api.openweathermap.org/data/2.5/forecast?q=${cityName},${countryCode}&appid=${apiKey}&units=${units}`
+      return `https://api.openweathermap.org/data/2.5/forecast?q=${
+        encodeURIComponent(cityName)
+      },${encodeURIComponent(countryCode)}&appid=${
+        apiKey
+      }&units=${encodeURIComponent(units)}`
     }
           
     async function fetchData() {
@@ -40,22 +47,30 @@ const WeatherData  = ({cityName, countryCode, units}: IWeatherDataProps) => {
     // TODO: Wrap in if responseData
     
     <div>
-      <h1>{responseData?.city.name}</h1>
-      <h2>{responseData?.city.country}</h2>
+      <TitleCard cityName={responseData?.city.name} countryCode={responseData?.city.country} />
 
-      {responseData?.list.map(list => {
-        return <TemperatureCard 
-          dateTimeText={list.dt_txt} 
-          weatherDescription={list.weather[0].description} 
-          temp={list.main.temp} 
-          minTemp={list.main.feels_like} 
-          maxTemp={list.main.temp_min} 
-          feelsLikeTemp={list.main.temp_max} 
-        />
+      {responseData && responseData.list.map(list => {
+
+        let splitDateTimeText = list.dt_txt.split(' ');
+        let splitDateText = splitDateTimeText[0].split('-')
+
+        console.log(splitDateText);
+
+        let date = `${splitDateText[2]}-${splitDateText[1]}-${splitDateText[0]}`
+        console.log(date);
+
+        return <div className={baseClass}>
+          <TemperatureCard 
+            dateText={date} 
+            timeText={splitDateTimeText[1]}
+            weatherDescription={list.weather[0].description} 
+            temp={list.main.temp} 
+            minTemp={list.main.feels_like} 
+            maxTemp={list.main.temp_min} 
+            feelsLikeTemp={list.main.temp_max} 
+          />
+        </div>
       })}
-
-
-      
     </div>
   );
 }

@@ -1,0 +1,73 @@
+@import '../variables.scss';
+
+.wa-temperature-card {
+    background-color: #eceff4;
+    padding: 10px;
+    margin: 5px;
+    width: 50%;
+    box-sizing: border-box;
+
+    &__date {
+        text-align: center;
+
+        &--bold {
+            font-weight: bold;
+        }
+    }
+    
+    &__date--blue {
+        color: $color-nord-0;
+    }
+
+    &__time {
+        text-align: center;
+
+        &--bold {
+            font-weight: bold;
+        }
+    }
+
+    &__time--blue {
+        color: $color-nord-0;
+    }
+
+    &__weather-description {
+        text-align: center;
+
+        &--bold {
+            font-weight: bold;
+        }
+    }
+
+    &__temp {
+        text-align: center;
+
+        &--bold {
+            font-weight: bold;
+        }
+    }
+
+    &__feels-like {
+        text-align: center;
+
+        &--bold {
+            font-weight: bold;
+        }
+    }
+
+    &__min-temp {
+        text-align: center;
+
+        &--bold {
+            font-weight: bold;
+        }
+    }
+    
+    &__max-temp {
+        text-align: center;
+
+        &--bold {
+            font-weight: bold;
+        }
+    }
+}

@@ -1,0 +1,38 @@
+// Nord Theme: https://www.nordtheme.com/docs/colors-and-palettes
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,900;1,400;1,900&display=swap');
+
+// Fonts
+$font-body: 400 1.00rem/1.43rem 'Roboto', sans-serif;
+$font-body-md: 400 1.5rem/1.73rem 'Roboto', sans-serif;
+$font-body-bold-md: 900 1.5rem/1.73rem 'Roboto', sans-serif;
+$font-body-bold-lg: 900 2.00rem/2.43rem 'Roboto', sans-serif;
+
+// ===== Polar Night =====
+// Text
+$color-nord-0: #2E3440;  
+//brighter text color when a button is hovered, active or focused.
+// subtle/inconspicuous UI text elements that do not need so much visual attention.
+$color-nord-1: #3b4252;  
+$color-nord-2: #434c5e;
+$color-nord-3: #4c566a;
+
+// Snow Storm
+$color-nord-4: #d8dee9;
+$color-nord-5: #e5e9f0;
+// Background
+$color-nord-6: #eceff4; 
+
+// Frost
+$color-nord-7: #8fbcbb;
+$color-nord-8: #88c0d0;
+$color-nord-9: #81a1c1;
+$color-nord-10: #5e81ac;
+
+// Aurora
+$color-nord-11: #bf616a;
+$color-nord-12: #d08770;
+$color-nord-13: #ebcb8b;
+$color-nord-14: #a3be8c;
+$color-nord-15: #b48ead;
+
