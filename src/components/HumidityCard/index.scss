@@ -1,0 +1,15 @@
+@import '../variables.scss';
+
+.wa-humidity-card {
+    border: 3px solid $color-nord-11;
+    margin: 10px;
+    width: 50%;
+    text-align: center;
+    background-color: $color-nord-6;
+
+    &__humidity {
+        &--bold {
+            font-weight: bold;
+        }
+    }
+}

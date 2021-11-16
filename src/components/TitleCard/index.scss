@@ -1,0 +1,16 @@
+@import '../variables.scss';
+
+.wa-title-card {
+
+    text-align: center;
+
+    &__city-name {
+        font: $font-body-bold-lg;
+        color: $color-nord-10;
+    }
+
+    &__state-country-code {
+        font: $font-body-bold-md;
+        color: $color-nord-9;
+    }
+}
