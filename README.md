@@ -1,5 +1,7 @@
 # Weather App
 
+![Screenshot from 2021-11-16 17-26-36](https://user-images.githubusercontent.com/3919875/141941814-8595f8be-5b88-4b04-b374-55c4f7e1fc24.png)
+
 This project was built with the intention for me to:
 - Get better with TypeScript
 - Get better with React
