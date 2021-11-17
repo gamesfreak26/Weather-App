@@ -35,31 +35,34 @@ const RouterCard = () => {
     <div>
       <ul className={baseClass}>
         <li>
-          <Link 
+          <NavLink 
            to="/"
-           className={splitLocation[1] === "" ? `${baseClass}__link ${baseClass}__link--active` : `${baseClass}__link`}
+           className={({ isActive }) => `${baseClass}__link ` + (isActive ? `${baseClass}__link--active` : '') }
+          //  className={splitLocation[1] === "" ? `${baseClass}__link ${baseClass}__link--active` : `${baseClass}__link`}
           >
             Home
-          </Link>
+          </NavLink>
         </li>
         <li>
-          <Link
+          <NavLink
             to="/humidity"
-            className={splitLocation[1] === "humidity" ? `${baseClass}__link ${baseClass}__link--active` : `${baseClass}__link`}
+            className={({ isActive }) => `${baseClass}__link ` + (isActive ? `${baseClass}__link--active` : '') }
+            // className={splitLocation[1] === "humidity" ? `${baseClass}__link ${baseClass}__link--active` : `${baseClass}__link`}
           >
             Humidity
-          </Link>
+          </NavLink>
         </li>
         {/* <li className={splitLocation[1] === "rainfall" ? `${baseClass}__link--active` : ""}>
           <NavLink to="/rainfall">Rainfall</NavLink>
         </li> */}
         <li>
-          <Link 
+          <NavLink 
             to="/temperature"
-            className={splitLocation[1] === "temperature" ? `${baseClass}__link ${baseClass}__link--active` : `${baseClass}__link`}
+            // className={splitLocation[1] === "temperature" ? `${baseClass}__link ${baseClass}__link--active` : `${baseClass}__link`}
+            className={({ isActive }) => `${baseClass}__link ` + (isActive ? `${baseClass}__link--active` : '') }
           >
             Temperature
-          </Link>
+          </NavLink>
         </li>
       </ul>
       <Routes>
