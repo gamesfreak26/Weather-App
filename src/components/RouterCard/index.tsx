@@ -4,9 +4,7 @@ import Home from '../../routes/Home'
 import Humidity from '../../routes/Humidity';
 
 import {
-  BrowserRouter as Router,
   Route,
-  Link,
   Routes,
   useLocation
 } from "react-router-dom";
@@ -22,15 +20,6 @@ const baseClass = 'wa-router-nav'
 
 const RouterCard = () => {
 
-  //assigning location variable
-  const location = useLocation();
-
-  //destructuring pathname from location
-  const { pathname } = location;
-
-  //Javascript split method to get the name of the path in array
-  const splitLocation = pathname.split("/");
-
   return(
     <div>
       <ul className={baseClass}>
@@ -38,7 +27,6 @@ const RouterCard = () => {
           <NavLink 
            to="/"
            className={({ isActive }) => `${baseClass}__link ` + (isActive ? `${baseClass}__link--active` : '') }
-          //  className={splitLocation[1] === "" ? `${baseClass}__link ${baseClass}__link--active` : `${baseClass}__link`}
           >
             Home
           </NavLink>
@@ -47,18 +35,21 @@ const RouterCard = () => {
           <NavLink
             to="/humidity"
             className={({ isActive }) => `${baseClass}__link ` + (isActive ? `${baseClass}__link--active` : '') }
-            // className={splitLocation[1] === "humidity" ? `${baseClass}__link ${baseClass}__link--active` : `${baseClass}__link`}
           >
             Humidity
           </NavLink>
         </li>
-        {/* <li className={splitLocation[1] === "rainfall" ? `${baseClass}__link--active` : ""}>
-          <NavLink to="/rainfall">Rainfall</NavLink>
-        </li> */}
+        <li>
+          <NavLink
+            to="/rainfall"
+            className={({ isActive }) => `${baseClass}__link ` + (isActive ? `${baseClass}__link--active` : '') }
+          >
+            Rainfall
+          </NavLink>
+        </li>
         <li>
           <NavLink 
             to="/temperature"
-            // className={splitLocation[1] === "temperature" ? `${baseClass}__link ${baseClass}__link--active` : `${baseClass}__link`}
             className={({ isActive }) => `${baseClass}__link ` + (isActive ? `${baseClass}__link--active` : '') }
           >
             Temperature
